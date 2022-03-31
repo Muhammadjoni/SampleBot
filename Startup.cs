@@ -12,10 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SampleBot.Bots;
-using SampleBot.DB;
+using Microsoft.BotBuilderSamples.DB;
 
-namespace SampleBot
+namespace Microsoft.BotBuilderSamples
 {
     public class Startup
     {
@@ -34,12 +33,12 @@ namespace SampleBot
             // Create the Bot Framework Adapter with error handling enabled.
             services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDBContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             // Create a global hashset for our ConversationReferences
             services.AddSingleton<ConcurrentDictionary<string, ConversationReference>>();
 
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-            services.AddTransient<IBot, ProactiveBot>();
+            services.AddTransient<IBot, Bots.ProactiveBot>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

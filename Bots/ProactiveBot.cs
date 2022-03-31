@@ -10,7 +10,7 @@ using Microsoft.Bot.Builder.Teams;
 using Microsoft.Bot.Schema;
 using Microsoft.Bot.Schema.Teams;
 
-namespace SampleBot.Bots
+namespace Microsoft.BotBuilderSamples.Bots
 {
     public class ProactiveBot : TeamsActivityHandler
     {

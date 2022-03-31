@@ -1,4 +1,4 @@
-namespace SampleBot.Models
+namespace Microsoft.BotBuilderSamples.Models
 {
     public class User
   {
