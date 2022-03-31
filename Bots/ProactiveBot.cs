@@ -13,7 +13,7 @@ namespace Microsoft.BotBuilderSamples
     public class ProactiveBot : ActivityHandler
     {
         // Message to send to users when the bot receives a Conversation Update event
-        private const string WelcomeMessage = "Welcome to the Proactive Bot sample.  Navigate to http://localhost:3978/api/notify to proactively message everyone who has previously messaged this bot.";
+        private const string WelcomeMessage = "Welcome to the Proactive Bot sample. <a href=\"http://localhost:3978/api/notify\"> Proactively message everyone who has previously messaged this bot.";
 
         // Dependency injected dictionary for storing ConversationReference objects used in NotifyController to proactively message users
         private readonly ConcurrentDictionary<string, ConversationReference> _conversationReferences;
