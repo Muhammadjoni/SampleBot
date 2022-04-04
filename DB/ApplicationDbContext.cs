@@ -2,24 +2,26 @@
 // Licensed under the MIT License.
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.BotBuilderSamples.Models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using SampleBot.Models;
 
-namespace Microsoft.BotBuilderSamples.DB
+namespace SampleBot.DB
 {
-  public partial class ApplicationDBContext : DbContext
+  public class ApplicationDbContext : DbContext
   {
-    public ApplicationDBContext()
+    public ApplicationDbContext()
     {
     }
 
-    public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<User> Users { get; set; }
+    // public virtual DbSet<User> Users { get; set; }
+    public DbSet<ConvRef> ConversationReference { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -39,31 +41,8 @@ namespace Microsoft.BotBuilderSamples.DB
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
-      // modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
-      // modelBuilder.Entity<Employee>(entity =>
-      // {
-      //   entity.HasKey(e => e.EmpId)
-      //             .HasName("pk_emp_id");
-
-      //   entity.ToTable("EMPLOYEE");
-
-      //   entity.Property(e => e.EmpId)
-      //             .HasMaxLength(10)
-      //             .IsUnicode(false)
-      //             .HasColumnName("EMP_ID");
-
-      //   entity.Property(e => e.EmpName)
-      //             .IsRequired()
-      //             .HasMaxLength(50)
-      //             .IsUnicode(false)
-      //             .HasColumnName("EMP_NAME");
-      // });
-
-      // OnModelCreatingPartial(modelBuilder);
     }
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
   }
 }
 

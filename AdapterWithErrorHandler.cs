@@ -9,7 +9,7 @@ using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Microsoft.BotBuilderSamples
+namespace SampleBot
 {
     public class AdapterWithErrorHandler : CloudAdapter
     {

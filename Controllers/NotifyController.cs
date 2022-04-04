@@ -11,8 +11,9 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
+using SampleBot.Helper;
 
-namespace Microsoft.BotBuilderSamples.Controllers
+namespace SampleBot.Controllers
 {
     [Route("api/notify")]
     [ApiController]
@@ -20,18 +21,18 @@ namespace Microsoft.BotBuilderSamples.Controllers
     {
         private readonly IBotFrameworkHttpAdapter _adapter;
         private readonly string _appId;
-        private readonly ConcurrentDictionary<string, ConversationReference> _conversationReferences;
+        private readonly IConversationReferencesHelper _conversationReferenceHelper;
 
-        public NotifyController(IBotFrameworkHttpAdapter adapter, IConfiguration configuration, ConcurrentDictionary<string, ConversationReference> conversationReferences)
+        public NotifyController(IBotFrameworkHttpAdapter adapter, IConfiguration configuration, IConversationReferencesHelper conversationReferencesHelper)
         {
-            _adapter = adapter;
-            _conversationReferences = conversationReferences;
-            _appId = configuration["MicrosoftAppId"] ?? string.Empty;
+          _adapter = adapter;
+          _conversationReferenceHelper = conversationReferencesHelper;
+          _appId = configuration["MicrosoftAppId"] ?? string.Empty;
         }
 
         public async Task<IActionResult> Get()
         {
-            foreach (var conversationReference in _conversationReferences.Values)
+            foreach (var conversationReference in _conversationReferenceHelper.)
             {
                 await ((BotAdapter)_adapter).ContinueConversationAsync(_appId, conversationReference, BotCallback, default(CancellationToken));
             }

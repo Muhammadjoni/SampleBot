@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Microsoft.BotBuilderSamples
+namespace SampleBot
 {
     public class Program
     {
@@ -25,5 +25,6 @@ namespace Microsoft.BotBuilderSamples
                     });
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }
